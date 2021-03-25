@@ -11,15 +11,14 @@ from aiogram import Bot, Dispatcher, executor, types
 # 
 def handler():
     
-    bot = Bot(token='1222400841:AAEpR1HA7rcqm-qHqIVTtlaelXHFKNRi_H0')
+    bot = Bot(token='токен')
     dp = Dispatcher(bot)
 
     @dp.message_handler(commands=['ls'])
     async def ls(message: types.Message): # Получить список файлов/папок в директории
         await message.answer('\n- '.join([f'{i}' for i in (os.listdir(f'{os.getcwd()}'))]))
     
-    @dp.message_handler(regexp=r'привет|хай|hi|сап|здарова| \
-                        здаров|здравствуй|hello|sup|салам|шалом')
+    @dp.message_handler(regexp=r'привет|hi|сап')
     async def message_handler(message: types.Message): # А это поздороваться
         phrase = (set(message.text.lower().split()))
         try:
@@ -97,8 +96,8 @@ def handler():
                 params = {'AUTH_FORM': 'Y',
                         'TYPE': u'AUTH',
                         'backurl': u'/index.php',
-                        'USER_LOGIN': u'Zubashenko.D',
-                        'USER_PASSWORD': u'1459YBf7',
+                        'USER_LOGIN': u'Логин',
+                        'USER_PASSWORD': u'Пароль',
                         'Login': u'Войти'}
                 r = session.post(url, params)
                 return r
@@ -151,6 +150,6 @@ def handler():
 5. /cmd _____ - Исполнение команды терминала
 6. /screen - Вывод скриншота
 7. сделай пароль/пароль - Генерирует пароль, если есть число - принимает как длину пароля
-8. оценки/табель/экзы - Выводит твой табель в унике''')
+8. оценки/табель/экзы - Выводит табеля''')
 
     return dp
